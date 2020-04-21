@@ -32,7 +32,6 @@ function Modal({navigation}: any) {
 
 const Tab = createBottomTabNavigator();
 const Root = createStackNavigator();
-const Stack = createStackNavigator();
 
 const TabComp = () => (
   <Tab.Navigator initialRouteName="TabOne">
@@ -51,15 +50,11 @@ const baseGlobalOptions = () => ({
   ...TransitionPresets.FadeFromBottomAndroid,
 });
 
-const GlobalStack = [
-  <Stack.Screen name="Modal" component={Modal} options={baseGlobalOptions} />,
-];
-
 const AppStackNavigator = () => (
   <NavigationContainer>
     <Root.Navigator initialRouteName="Tabs" headerMode="none">
       <Root.Screen name="Tabs" component={TabComp} />
-      {GlobalStack}
+      <Root.Screen name="Modal" component={Modal} options={baseGlobalOptions} />
     </Root.Navigator>
   </NavigationContainer>
 );
